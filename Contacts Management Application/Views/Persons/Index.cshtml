@@ -1,0 +1,38 @@
+﻿@model List<Contacts_Management_Application.Models.Entity.Persons>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.ActionLink("New Person", "Add", null, new { @class = "btn btn-primary" })
+
+<br />
+<br />
+
+<form method="get" asp-action="Index">
+    <p>
+        <input type="search" placeholder="Enter Employe Name or Surname" value="@ViewData["Persons"]" name="Search" style="width:500px;"/>
+        <input type="submit" value="Search" class="btn btn-primary" />
+        <a asp-action="Index"></a>
+        </p>
+    </form>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Transactions</th>
+    </tr>
+
+    @foreach (var Persons in Model)
+    {
+        <tr>
+            <td>@Persons.Name</td>
+            <td>@Persons.SurName</td>
+            <td>
+                @Html.ActionLink("Update", "Update", new { id = Persons.Id })|
+                @Html.ActionLink("Detail", "Detail", new { id = Persons.Id })|
+                @Html.ActionLink("Delete", "Delete", new { id = Persons.Id }, new { onclick = "return confirm('Are you sure you want to delete the record?');" })|
+            </td>
+        </tr>
+    }
+</table>

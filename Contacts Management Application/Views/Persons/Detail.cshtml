@@ -1,0 +1,17 @@
+﻿@model Contacts_Management_Application.Models.PersonsDetailViewModel.PersonsDetailViewModel
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Persons.Name @Model.Persons.SurName Informations</h2>
+
+<hr />
+
+<dl class="dl-horizontal">
+    <dt>@Html.DisplayNameFor(x => x.Persons.Email)</dt>
+    <dd>@Model.Persons.Email</dd>
+
+    <dt>@Html.DisplayNameFor(x => x.Persons.Phone)</dt>
+    <dd>@Model.Persons.Phone</dd>
+</dl>
